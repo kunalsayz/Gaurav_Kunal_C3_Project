@@ -1,0 +1,33 @@
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class RestaurantTest {
+    Restaurant restaurant;
+
+    //TTD : Failing Test Case for the total cost of all the items.
+    @Test
+    public void if_the_total_cost_is_equal_to_the_sum_of_price_of_all_items_added_in_the_menu() {
+
+        //Act
+        List<Item> selectedItems = new ArrayList<>();
+        Item temp = restaurant.findItemByName("Sweet corn soup");
+        if (temp != null)
+            selectedItems.add(temp);
+        temp = restaurant.findItemByName("Vegetable lasagne");
+        if (temp != null)
+            selectedItems.add(temp);
+
+        //Arrange
+        int totalCost = restaurant.getTotalCostOfItems(selectedItems);
+
+        // Assert
+        assertEquals(totalCost, 300);
+
+    }
+}
